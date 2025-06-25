@@ -17,24 +17,24 @@ export type AirdropRateLimit = {
  */
 export type AirdropLimitKeys = "default" | "github";
 
-// /**
-//  * Define the standard airdrop limits for requesting users
-//  * (including the base and elevated)
-//  */
-// export const AIRDROP_LIMITS: {
-//   [key in AirdropLimitKeys]: AirdropRateLimit;
-// } = {
-//   default: {
-//     coveredHours: 8,
-//     allowedRequests: 2,
-//     maxAmountPerRequest: 5,
-//   },
-//   github: {
-//     coveredHours: 8,
-//     allowedRequests: 2,
-//     maxAmountPerRequest: 5,
-//   },
-// };
+/**
+ * Define the standard airdrop limits for requesting users
+ * (including the base and elevated)
+ */
+export const AIRDROP_LIMITS: {
+  [key in AirdropLimitKeys]: AirdropRateLimit;
+} = {
+  default: {
+    coveredHours: 8,
+    allowedRequests: 2,
+    maxAmountPerRequest: 5,
+  },
+  github: {
+    coveredHours: 8,
+    allowedRequests: 2,
+    maxAmountPerRequest: 5,
+  },
+};
 
 // Environment variables
 // Centralized here for consistent usage across the codebase
