@@ -3,13 +3,13 @@
  * allows people to request devnet solx to be airdropped to their wallet
  */
 
-import { devnetFaucetURL } from "@/lib/constants";
+import { devnetFaucetURL, ticker } from "@/lib/constants";
 
 export const POST = async (req: Request) => {
   try {
     const { walletAddress, amount } = await req.json();
     if (amount > 250000) {
-      return new Response(JSON.stringify({ error: "You can only request up to 0.25 SOLX per request." }), { status: 400 });
+      return new Response(JSON.stringify({ error: `You can only request up to 0.25 ${ticker} per request.` }), { status: 400 });
     }
     if (!devnetFaucetURL) {
       return new Response(JSON.stringify({ error: "Faucet URL is not configured." }), { status: 500 });
