@@ -1,14 +1,15 @@
 # Solana Devnet Faucet
 
-A Next.js-based Solana devnet faucet with rate limiting, GitHub authentication, and Cloudflare protection.
+A Next.js-based Solana devnet faucet with configurable rate limiting and Cloudflare protection.
 
 ## Features
 
 - **Rate Limiting**: Configurable limits for airdrop requests
-- **GitHub Authentication**: Enhanced limits for authenticated users
 - **Cloudflare Turnstile**: Bot protection
-- **PostgreSQL**: Request tracking and monitoring
+- **PostgreSQL**: Request tracking and monitoring (currently disabled)
 - **Responsive UI**: Built with Tailwind CSS and Radix UI
+
+> **Note**: GitHub authentication is currently disabled in the codebase. All auth-related code is commented out.
 
 ## Setup
 
@@ -55,8 +56,9 @@ A Next.js-based Solana devnet faucet with rate limiting, GitHub authentication, 
 ## Rate Limits
 
 Default limits are configured in `lib/constants.ts`:
-- **Default users**: 2 requests per 8 hours, max 5 tokens per request
-- **GitHub users**: 2 requests per 8 hours, max 5 tokens per request
+- **Default users**: 1 request per 6 hours, max .25 tokens per request
+
+> **Note**: GitHub-based rate limiting is currently disabled. All users use the default limits.
 
 ## API Endpoints
 
