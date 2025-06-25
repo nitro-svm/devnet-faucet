@@ -69,9 +69,12 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
     }
   };
 
-  const validateAmount = (value: number): boolean => {
-    return amountOptions.includes(value);
-  };
+  const validateAmount = useCallback(
+    (value: number): boolean => {
+      return amountOptions.includes(value);
+    }, 
+    [amountOptions]
+  );
 
   const handleWalletChange = (event: ChangeEvent<HTMLInputElement>) => {
     const address = event.target.value;
@@ -189,6 +192,9 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
         errors.amount === ""
     );
   }, [errors.amount, errors.wallet, amount, walletAddress]);
+
+  useEffect(() => {
+  }, [validateAmount]);
 
   //
   const submitHandler = useCallback(

@@ -1,25 +1,8 @@
-/**
- * General constants used for the website
- */
-
 export const SITE = {
   domain: "faucet.solaxy.io",
   url: "https://faucet.solaxy.io",
 };
 
-/**
- * Airdrop rate limit controls
- *
- * Example rate limits:
- * - if `coveredHours` = 1, `allowedRequests` = 2, `maxAmountPerRequest` = 5,
- *    + a user could make `2` airdrop requests per `1` hour
- *    + each airdrop could be up to `5` SOL each
- *    + for a total of `10` SOL per hour max
- * - if `coveredHours` = 1, `allowedRequests` = 4, `maxAmountPerRequest` = 10,
- *    + a user could make `4` airdrop requests per `1` hour
- *    + each airdrop could be up to `10` SOL each
- *    + for a total of `40` SOL per hour max
- */
 export type AirdropRateLimit = {
   /** number of previous hours covered by the rate limit, in a rolling period */
   coveredHours: number;
@@ -34,40 +17,24 @@ export type AirdropRateLimit = {
  */
 export type AirdropLimitKeys = "default" | "github";
 
-/**
- * Define the standard airdrop limits for requesting users
- * (including the base and elevated)
- */
-export const AIRDROP_LIMITS: {
-  [key in AirdropLimitKeys]: AirdropRateLimit;
-} = {
-  default: {
-    coveredHours: 8,
-    allowedRequests: 2,
-    maxAmountPerRequest: 5,
-  },
-  github: {
-    coveredHours: 8,
-    allowedRequests: 2,
-    maxAmountPerRequest: 5,
-  },
-};
-
-/**
- * Represents a record in the `faucet.transactions` table.
- */
-export type FaucetTransaction = {
-  /** Unique signature of the Solana transaction */
-  signature: string;
-  /** Requestor's IP address */
-  ip_address: string;
-  /** Requestor's wallet address */
-  wallet_address: string;
-  /** Requestor's GitHub userId (may become optional) */
-  github_username?: string;
-  /** Timestamp of the transaction */
-  timestamp: number;
-};
+// /**
+//  * Define the standard airdrop limits for requesting users
+//  * (including the base and elevated)
+//  */
+// export const AIRDROP_LIMITS: {
+//   [key in AirdropLimitKeys]: AirdropRateLimit;
+// } = {
+//   default: {
+//     coveredHours: 8,
+//     allowedRequests: 2,
+//     maxAmountPerRequest: 5,
+//   },
+//   github: {
+//     coveredHours: 8,
+//     allowedRequests: 2,
+//     maxAmountPerRequest: 5,
+//   },
+// };
 
 // Environment variables
 // Centralized here for consistent usage across the codebase
