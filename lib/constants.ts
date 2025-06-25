@@ -1,30 +1,14 @@
-/**
- * General constants used for the website
- */
 export const SITE = {
-  domain: "faucet.solana.com",
-  url: "https://faucet.solana.com",
+  domain: "faucet.solaxy.io",
+  url: "https://faucet.solaxy.io",
 };
 
-/**
- * Airdrop rate limit controls
- *
- * Example rate limits:
- * - if `coveredHours` = 1, `allowedRequests` = 2, `maxAmountPerRequest` = 5,
- *    + a user could make `2` airdrop requests per `1` hour
- *    + each airdrop could be up to `5` SOL each
- *    + for a total of `10` SOL per hour max
- * - if `coveredHours` = 1, `allowedRequests` = 4, `maxAmountPerRequest` = 10,
- *    + a user could make `4` airdrop requests per `1` hour
- *    + each airdrop could be up to `10` SOL each
- *    + for a total of `40` SOL per hour max
- */
 export type AirdropRateLimit = {
   /** number of previous hours covered by the rate limit, in a rolling period */
   coveredHours: number;
   /** max number of requests to allow per `coveredHours` time period */
   allowedRequests: number;
-  /** max amount of SOl allowed per individual request */
+  /** max amount of SOL allowed per individual request */
   maxAmountPerRequest: number;
 };
 
@@ -52,18 +36,10 @@ export const AIRDROP_LIMITS: {
   },
 };
 
-/**
- * Represents a record in the `faucet.transactions` table.
- */
-export type FaucetTransaction = {
-  /** Unique signature of the Solana transaction */
-  signature: string;
-  /** Requestor's IP address */
-  ip_address: string;
-  /** Requestor's wallet address */
-  wallet_address: string;
-  /** Requestor's GitHub userId (may become optional) */
-  github_username?: string;
-  /** Timestamp of the transaction */
-  timestamp: number;
-};
+// Environment variables for endpoints
+// Number of lamports per SOLX token (Solana convention: 1 SOLX = 1,000,000 lamports)
+export const LAMPORTS_PER_SOLX = 1_000_000;
+export const devnetFaucetURL = process.env.NEXT_PUBLIC_RPC_URL;
+export const appName = process.env.NEXT_PUBLIC_APP_NAME;
+export const appDescription = process.env.NEXT_PUBLIC_APP_DESCRIPTION;
+export const ticker = process.env.NEXT_PUBLIC_TICKER;
