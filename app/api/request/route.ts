@@ -5,7 +5,6 @@
 
 import { devnetFaucetURL } from "@/lib/constants";
 
-// Solaxy devnet faucet endpoint for SOLX
 export const POST = async (req: Request) => {
   try {
     const { walletAddress, amount } = await req.json();

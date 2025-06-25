@@ -31,7 +31,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 import Image from "next/image";
 import svgLoader from "@/public/svgLoader.svg";
-import { LAMPORTS_PER_SOLX } from "@/lib/constants";
+import { LAMPORTS_PER_SOLX, ticker } from "@/lib/constants";
 
 type AirdropFormProps = {
   className?: string;
@@ -71,7 +71,7 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
 
   const validateAmount = useCallback(
     (value: number): boolean => {
-      return amountOptions.includes(value);
+    return amountOptions.includes(value);
     }, 
     [amountOptions]
   );
@@ -222,7 +222,7 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
             </div>
           </CardTitle>
           <CardDescription>
-            Maximum of 0.25 SOLX per request <br />[every 6 hours]
+            Maximum of 0.25 {ticker} per request <br />[every 6 hours]
           </CardDescription>
         </CardHeader>
 

@@ -8,7 +8,7 @@ export type AirdropRateLimit = {
   coveredHours: number;
   /** max number of requests to allow per `coveredHours` time period */
   allowedRequests: number;
-  /** max amount of SOl allowed per individual request */
+  /** max amount of SOL allowed per individual request */
   maxAmountPerRequest: number;
 };
 
@@ -36,9 +36,10 @@ export const AIRDROP_LIMITS: {
   },
 };
 
-// Environment variables
-// Centralized here for consistent usage across the codebase
-export const devnetFaucetURL = process.env.NEXT_PUBLIC_RPC_URL;
-
+// Environment variables for endpoints
 // Number of lamports per SOLX token (Solana convention: 1 SOLX = 1,000,000 lamports)
 export const LAMPORTS_PER_SOLX = 1_000_000;
+export const devnetFaucetURL = process.env.NEXT_PUBLIC_RPC_URL;
+export const appName = process.env.NEXT_PUBLIC_APP_NAME;
+export const appDescription = process.env.NEXT_PUBLIC_APP_DESCRIPTION;
+export const ticker = process.env.NEXT_PUBLIC_TICKER;

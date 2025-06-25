@@ -5,6 +5,7 @@ import { Footer } from "@/components/ui/footer";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { SITE } from "@/lib/constants";
+import { ticker, appName } from "@/lib/constants";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +14,11 @@ import { SITE } from "@/lib/constants";
  */
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: "Solaxy Devnet Faucet – Airdrop Devnet SOLX",
+  title: `${appName} Devnet Faucet – Airdrop Devnet ${ticker}`,
   description:
-    "Claim SOLX tokens for development purposes on the Solaxy Devnet.",
+    `Claim ${ticker} tokens for development purposes on the ${appName} Devnet.`,
   openGraph: {
-    images: "/solaxyLogo.png",
+    images: `/${appName}Logo.png`,
   },
 };
 
