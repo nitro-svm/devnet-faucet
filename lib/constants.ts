@@ -1,6 +1,6 @@
 export const SITE = {
-  domain: "faucet.solaxy.io",
-  url: "https://faucet.solaxy.io",
+  domain: process.env.NEXT_PUBLIC_DOMAIN ?? "faucet.solaxy.io",
+  url: process.env.NEXT_PUBLIC_URL ?? "https://faucet.solaxy.io",
 };
 
 export type AirdropRateLimit = {

@@ -35,9 +35,11 @@ A Next.js-based Solana devnet faucet with configurable rate limiting and Cloudfl
    GITHUB_CLIENT_SECRET=your_github_oauth_client_secret
 
    # Public variables (exposed to client)
-   NEXT_PUBLIC_RPC_URL=your_public_rpc_url
+   NEXT_PUBLIC_DOMAIN=your_app_domain
+   NEXT_PUBLIC_URL=your_app_url
    NEXT_PUBLIC_APP_NAME=your_app_name
    NEXT_PUBLIC_APP_DESCRIPTION=your_app_description
+   NEXT_PUBLIC_RPC_URL=your_public_rpc_url
    NEXT_PUBLIC_TICKER=your_token_ticker
    ```
 
