@@ -13,26 +13,15 @@ export type AirdropRateLimit = {
 };
 
 /**
- * Unique keys used to identify a specific airdrop limit
- */
-export type AirdropLimitKeys = "default" | "github";
-
-/**
  * Define the standard airdrop limits for requesting users
- * (including the base and elevated)
  */
 export const AIRDROP_LIMITS: {
-  [key in AirdropLimitKeys]: AirdropRateLimit;
+  default: AirdropRateLimit;
 } = {
   default: {
-    coveredHours: 8,
+    coveredHours: 6,
     allowedRequests: 2,
-    maxAmountPerRequest: 5,
-  },
-  github: {
-    coveredHours: 8,
-    allowedRequests: 2,
-    maxAmountPerRequest: 5,
+    maxAmountPerRequest: 2000,
   },
 };
 

@@ -47,7 +47,7 @@ function formatWaitTime(seconds: number): string {
 
 export const AirdropForm = ({ className }: AirdropFormProps) => {
   const toaster = useToast();
-  const amountOptions = useMemo(() => [0.05, 0.1, 0.15, 0.25], []);
+  const amountOptions = useMemo(() => [200, 500, 1000, 2000], []);
   const [loading, setLoading] = useState<boolean>(false);
 
   const [walletAddress, setWalletAddress] = useState<string>("");
@@ -175,7 +175,7 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
     setIsFormValid(
       walletAddress !== "" &&
         amount !== null &&
-        amount <= 0.25 &&
+        amount <= 2000 &&
         errors.wallet === "" &&
         errors.amount === ""
     );
@@ -209,7 +209,7 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
             </div>
           </CardTitle>
           <CardDescription>
-            Maximum of 0.25 {ticker} per request <br />[every 6 hours]
+            Maximum of 2000 {ticker} per request <br />[every 6 hours]
           </CardDescription>
         </CardHeader>
 
