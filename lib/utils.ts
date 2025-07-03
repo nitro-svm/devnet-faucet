@@ -8,20 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Get the desired airdrop rate limit to be applied, based on a given requestor's session
+ * Get the desired airdrop rate limit to be applied
  */
-export async function getAirdropRateLimitForSession(
-  session: Session | null,
-): Promise<AirdropRateLimit> {
-  // always initialize with the default rate limit
-  let rateLimit = AIRDROP_LIMITS.default;
-
-  // when a user has authed with github, we will raise their rate limit
-  if (!!session?.user.githubUsername) {
-    rateLimit = AIRDROP_LIMITS.github;
-  }
-
-  return rateLimit;
+export async function getAirdropRateLimitForSession(): Promise<AirdropRateLimit> {
+  // always return the default rate limit since GitHub auth is disabled
+  return AIRDROP_LIMITS.default;
 }
 
 /**
