@@ -17,7 +17,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import Turnstile from "react-turnstile";
 import {
   Dialog,
   DialogContent,
@@ -94,18 +93,8 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
   };
 
   const requestAirdrop = useCallback(
-    async (cloudflareCallback: string | null = null) => {
+    async () => {
       try {
-        if (
-          cloudflareCallback === null &&
-          process.env.NODE_ENV != "development"
-        ) {
-          return toaster.toast({
-            title: "Error!",
-            description: "Please complete the captcha.",
-          });
-        }
-
         setLoading(true);
 
         await fetch("/api/request", {
@@ -116,7 +105,6 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
           body: JSON.stringify({
             amount: amount !== null ? Math.round(amount * LAMPORTS_PER_SOLX) : null,
             walletAddress,
-            cloudflareCallback,
           }),
         })
           .then(async res => {
@@ -203,10 +191,9 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
 
       if (loading) return;
 
-      if (process.env.NODE_ENV == "development") requestAirdrop();
-      else setShowVerifyDialog(true);
+      requestAirdrop();
     },
-    [loading, requestAirdrop, setShowVerifyDialog],
+    [loading, requestAirdrop],
   );
 
   return (
@@ -264,50 +251,20 @@ export const AirdropForm = ({ className }: AirdropFormProps) => {
         </CardContent>
 
         <CardFooter>
-          <Dialog
-            open={showVerifyDialog}
-            onOpenChange={(open: boolean) => setShowVerifyDialog(open)}
+          <Button
+            type="submit"
+            className="w-full"
+            variant="default"
+            disabled={!isFormValid || loading}
           >
-            <section className="grid w-full gap-3">
-              <Button
-                type="submit"
-                className="w-full"
-                variant="default"
-                disabled={!isFormValid || loading}
-              >
-                {loading ? (
-                  <Image src={svgLoader} alt="Loading..." className="h-10" />
-                ) : (
-                  <>
-                    <Coins className="w-4 h-4 mr-2" /> Confirm Airdrop
-                  </>
-                )}
-              </Button>
-            </section>
-
-            <DialogContent className="max-w-[450px]">
-              <DialogHeader>
-                <DialogTitle>Cloudflare Verification</DialogTitle>
-                <DialogDescription>
-                  Please complete the captcha to confirm your airdrop request.
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="relative flex items-center justify-center w-full p-5 py-10">
-                <Skeleton className="absolute w-[298px] h-[62px]" />
-                <Turnstile
-                  sitekey="0x4AAAAAAAH-Xpks-1nBLn95"
-                  onVerify={token => {
-                    setShowVerifyDialog(false);
-                    requestAirdrop(token);
-                  }}
-                  refreshExpired="auto"
-                  theme="dark"
-                  className="absolute z-10 rounded-lg max-w-fit"
-                />
-              </div>
-            </DialogContent>
-          </Dialog>
+            {loading ? (
+              <Image src={svgLoader} alt="Loading..." className="h-10" />
+            ) : (
+              <>
+                <Coins className="w-4 h-4 mr-2" /> Confirm Airdrop
+              </>
+            )}
+          </Button>
         </CardFooter>
       </Card>
     </form>
