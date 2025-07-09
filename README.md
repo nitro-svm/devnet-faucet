@@ -58,7 +58,7 @@ A Next.js-based Solana devnet faucet with configurable rate limiting and Cloudfl
 ## Rate Limits
 
 Default limits are configured in `lib/constants.ts`:
-- **Default users**: 1 request per 6 hours, max .25 tokens per request
+- **Default users**: 1 request per 6 hours, max 2000 tokens per request
 
 > **Note**: GitHub-based rate limiting is currently disabled. All users use the default limits.
 
